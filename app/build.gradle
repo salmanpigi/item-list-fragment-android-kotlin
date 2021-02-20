@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'  // untuk menghilankan findViewById
+    id 'kotlin-kapt'
 }
 
 android {
