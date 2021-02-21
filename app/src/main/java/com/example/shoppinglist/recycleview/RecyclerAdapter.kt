@@ -7,32 +7,30 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.R
 
-class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
-    private val kode = arrayOf("d116df5",
-        "36ffc75", "f5cfe78", "5b87628",
-        "db8d14e", "9913dc4", "e120f96",
-        "466251b")
+class RecyclerAdapter(var nameItem: ArrayList<String>, var date: ArrayList<String>,
+                      var qty: ArrayList<String>, var note: ArrayList<String>)
+    : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
-    private val kategori = arrayOf("Kekayaan", "Teknologi",
-        "Keluarga", "Bisnis",
-        "Keluarga", "Hutang",
-        "Teknologi", "Pidana")
+    constructor(){}
 
-    private val isi = arrayOf("pertanyaan 9",
-        "pertanyaan 11", "pertanyaan 17", "test forum",
-        "pertanyaan 12", "pertanyaan 18", "pertanyaan 20",
-        "pertanyaan 21")
+    private var shopDates = arrayListOf<String>("12-12-2012", "11-11-2011", "10-10-2010", "09-09-2009")
+    private var itemNames = arrayListOf<String>("Jeruk", "Semangka", "Salak", "Melon")
+    private var qtys = arrayListOf<String>("120", "110", "110", "90")
+    private var notes = arrayListOf<String>("aaa", "bbb", "ccc", "ddd")
+
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var itemKode: TextView
-        var itemKategori: TextView
-        var itemIsi: TextView
+        var itemName: TextView
+        var itemQty: TextView
+        var itemNote: TextView
+        var itemDate: TextView
 
         init {
-            itemKode = itemView.findViewById(R.id.code)
-            itemKategori = itemView.findViewById(R.id.category)
-            itemIsi = itemView.findViewById(R.id.isi)
+            itemName = itemView.findViewById(R.id.cv_itemName)
+            itemQty = itemView.findViewById(R.id.cv_qty)
+            itemNote = itemView.findViewById(R.id.cv_note)
+            itemDate = itemView.findViewById(R.id.cv_shop_date)
 
 //            itemView.setOnClickListener {
 //                var position: Int = adapterPosition
@@ -55,14 +53,14 @@ class RecyclerAdapter : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        viewHolder.itemKode.text = kode[i]
-        viewHolder.itemKategori.text = kategori[i]
-        viewHolder.itemIsi.text = isi[i]
-
+        viewHolder.itemName.text = itemNames[i]
+        viewHolder.itemQty.text = qtys[i]
+        viewHolder.itemNote.text = notes[i]
+        viewHolder.itemDate.text = shopDates[i]
     }
 
     override fun getItemCount(): Int {
-        return kode.size
+        return qtys.size
     }
 
 }

@@ -1,65 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="96dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="12dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
     android:id="@+id/card_pertanyaan"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="12dp"
+    android:layout_marginRight="16dp"
+    android:clickable="true"
+    android:foreground="?selectableItemBackground"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="10dp"
-    app:contentPadding="10dp"
-    android:foreground="?selectableItemBackground"
-    android:clickable="true">
+    app:contentPadding="10dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/code"
-                android:layout_width="181dp"
-                android:layout_height="20dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="68dp"
+                android:id="@+id/cv_itemName"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/lato"
-                android:text="Code" />
+                android:text="Item Name" />
 
             <TextView
-                android:id="@+id/category"
+                android:id="@+id/cv_qty"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:text="Category"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/lato"
-                android:gravity="end|center_vertical"/>
+                android:gravity="right"
+                android:text="Quantity" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/isi"
+                android:id="@+id/cv_note"
                 android:layout_width="match_parent"
-                android:layout_height="36dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="44dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:gravity="top"
-                android:fontFamily="@font/lato"
-                android:text="Isi" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Notes" />
 
+            <TextView
+                android:id="@+id/cv_shop_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Shop Date" />
         </LinearLayout>
-
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
