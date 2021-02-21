@@ -18,12 +18,13 @@ class MainActivity : AppCompatActivity() {
         formFragment = AddFormFragment()
         itemListFragment = ItemListFragment()
 
+        bottom_nav.menu.getItem(1).isChecked= true
         switchFragment(itemListFragment)
 
         bottom_nav.setOnNavigationItemSelectedListener {
             when(it.itemId) {
-                R.id.nav_add -> switchFragment(itemListFragment)
-                R.id.nav_itemList -> switchFragment(formFragment)
+                R.id.nav_add -> switchFragment(formFragment)
+                R.id.nav_itemList -> switchFragment(itemListFragment)
             }
             true
         }
