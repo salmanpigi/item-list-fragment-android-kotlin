@@ -28,7 +28,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/txt_shoppingDate"
+            android:id="@+id/et_shopping_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -39,7 +39,7 @@
             android:padding="10dp" />
 
         <EditText
-            android:id="@+id/txt_itemName"
+            android:id="@+id/et_item_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -50,7 +50,7 @@
             android:padding="10dp" />
 
         <EditText
-            android:id="@+id/txt_qty"
+            android:id="@+id/et_qty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -61,7 +61,7 @@
             android:padding="10dp" />
 
         <EditText
-            android:id="@+id/txt_notes"
+            android:id="@+id/et_note"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"

@@ -5,39 +5,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shoppinglist.ItemList
 import com.example.shoppinglist.R
 
-data class RecyclerAdapter(var name: String ="", var date: String="", var qty: String="", var note: String="")
-    : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
-
-//    constructor()
-
-    private var shopDates: ArrayList<String> = arrayListOf()
-    private var itemNames: ArrayList<String> = arrayListOf()
-    private var qtys: ArrayList<String> = arrayListOf()
-    private var notes: ArrayList<String> = arrayListOf()
-
-
-//    private var shopDates = arrayListOf<String>("12-12-2012", "11-11-2011", "10-10-2010", "09-09-2009")
-//    private var itemNames = arrayListOf<String>("Jeruk", "Semangka", "Salak", "Melon")
-//    private var qtys = arrayListOf<String>("120", "110", "110", "90")
-//    private var notes = arrayListOf<String>("aaa", "bbb", "ccc", "ddd")
-
+class RecyclerAdapter(): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         var itemName: TextView
         var itemQty: TextView
         var itemNote: TextView
         var itemDate: TextView
 
-
         init {
-            itemNames.add(name)
-            shopDates.add(date)
-            qtys.add(qty)
-            notes.add(note)
-
             itemName = itemView.findViewById(R.id.cv_itemName)
             itemQty = itemView.findViewById(R.id.cv_qty)
             itemNote = itemView.findViewById(R.id.cv_note)
@@ -64,14 +43,14 @@ data class RecyclerAdapter(var name: String ="", var date: String="", var qty: S
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        viewHolder.itemName.text = itemNames[i]
-        viewHolder.itemQty.text = qtys[i]
-        viewHolder.itemNote.text = notes[i]
-        viewHolder.itemDate.text = shopDates[i]
+        viewHolder.itemName.text = ItemList[i].itemName
+        viewHolder.itemQty.text = ItemList[i].quantity
+        viewHolder.itemNote.text = ItemList[i].note
+        viewHolder.itemDate.text = ItemList[i].date
     }
 
     override fun getItemCount(): Int {
-        return qtys.size
+        return ItemList.size
     }
 
 }
