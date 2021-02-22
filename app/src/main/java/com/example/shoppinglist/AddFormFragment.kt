@@ -1,16 +1,16 @@
 package com.example.shoppinglist
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.shoppinglist.`interface`.ServiceInterface
 import com.example.shoppinglist.enntities.Item
 import kotlinx.android.synthetic.main.fragment_add_form.*
 
-class AddFormFragment(private val serviceInterface: ServiceInterface) : Fragment() {
+class AddFormFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,15 +33,9 @@ class AddFormFragment(private val serviceInterface: ServiceInterface) : Fragment
             )
 
             if (item != null) {
-                serviceInterface.addItem(item)
+                ItemList.add(item)
                 Toast.makeText(activity, "Success add data", Toast.LENGTH_SHORT).show()
             }
         }
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance(serviceInterface: ServiceInterface) =
-            AddFormFragment(serviceInterface)
     }
 }
