@@ -1,4 +1,4 @@
-package com.example.shoppinglist
+package com.example.shoppinglist.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shoppinglist.R
 import com.example.shoppinglist.recycleview.RecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_item_list.*
 
@@ -30,10 +31,7 @@ class ItemListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recycler_view_item.apply {
-            // set a LinearLayoutManager to handle Android
-            // RecyclerView behavior
             layoutManager = LinearLayoutManager(activity)
-            // set the custom adapter to the RecyclerView
             adapter = RecyclerAdapter()
         }
     }

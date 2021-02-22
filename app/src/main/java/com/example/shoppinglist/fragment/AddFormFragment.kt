@@ -1,4 +1,4 @@
-package com.example.shoppinglist
+package com.example.shoppinglist.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.shoppinglist.`interface`.ServiceInterface
+import com.example.shoppinglist.utils.ItemList
+import com.example.shoppinglist.R
 import com.example.shoppinglist.enntities.Item
 import kotlinx.android.synthetic.main.fragment_add_form.*
 
