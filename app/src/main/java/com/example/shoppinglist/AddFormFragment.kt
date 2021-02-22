@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.shoppinglist.`interface`.ServiceInterface
 import com.example.shoppinglist.enntities.Item
-import com.example.shoppinglist.recycleview.RecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_add_form.*
 
 class AddFormFragment(private val serviceInterface: ServiceInterface) : Fragment() {
@@ -30,7 +29,7 @@ class AddFormFragment(private val serviceInterface: ServiceInterface) : Fragment
                 itemName = et_item_name.text.toString(),
                 quantity = et_qty.text.toString(),
                 note = et_note.text.toString(),
-                date = et_shopping_date.toString()
+                dateItem = et_shopping_date.text.toString()
             )
 
             if (item != null) {

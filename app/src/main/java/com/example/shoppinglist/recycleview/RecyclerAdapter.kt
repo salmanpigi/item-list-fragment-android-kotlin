@@ -21,18 +21,6 @@ class RecyclerAdapter(): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
             itemQty = itemView.findViewById(R.id.cv_qty)
             itemNote = itemView.findViewById(R.id.cv_note)
             itemDate = itemView.findViewById(R.id.cv_shop_date)
-
-//            itemView.setOnClickListener {
-//                var position: Int = adapterPosition
-//                val context = itemView.context
-//                val intent = Intent(context, DetailPertanyaan::class.java).apply {
-//                    putExtra("NUMBER", position)
-//                    putExtra("CODE", itemKode.text)
-//                    putExtra("CATEGORY", itemKategori.text)
-//                    putExtra("CONTENT", itemIsi.text)
-//                }
-//                context.startActivity(intent)
-//            }
         }
     }
 
@@ -46,7 +34,7 @@ class RecyclerAdapter(): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         viewHolder.itemName.text = ItemList[i].itemName
         viewHolder.itemQty.text = ItemList[i].quantity
         viewHolder.itemNote.text = ItemList[i].note
-        viewHolder.itemDate.text = ItemList[i].date
+        viewHolder.itemDate.text = ItemList[i].dateItem
     }
 
     override fun getItemCount(): Int {
