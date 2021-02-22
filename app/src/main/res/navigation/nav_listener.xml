@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_listener"
-    app:startDestination="@id/addFormFragment">
+    app:startDestination="@id/nav_add">
 
     <activity
         android:id="@+id/mainActivity"
@@ -11,19 +11,19 @@
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
     <fragment
-        android:id="@+id/addFormFragment"
+        android:id="@+id/nav_add"
         android:name="com.example.shoppinglist.fragment.AddFormFragment"
         android:label="fragment_add_form"
         tools:layout="@layout/fragment_add_form" />
     <fragment
-        android:id="@+id/itemListFragment"
+        android:id="@+id/nav_itemList"
         android:name="com.example.shoppinglist.fragment.ItemListFragment"
         android:label="fragment_item_list"
         tools:layout="@layout/fragment_item_list" />
     <action
         android:id="@+id/action_global_addFormFragment"
-        app:destination="@id/addFormFragment" />
+        app:destination="@id/nav_add" />
     <action
         android:id="@+id/action_global_itemListFragment"
-        app:destination="@id/itemListFragment" />
+        app:destination="@id/nav_itemList" />
 </navigation>
