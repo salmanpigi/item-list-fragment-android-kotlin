@@ -6,28 +6,22 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.shoppinglist.`interface`.ServiceInterface
-import com.example.shoppinglist.enntities.Item
-import com.example.shoppinglist.utils.ItemList
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity(), ServiceInterface {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var navController: NavController
-    lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.hide()
 
         navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.findNavController()
         bottomNavigationView = findViewById(R.id.bottom_nav)
         bottomNavigationView.setupWithNavController(navController)
-    }
-
-    override fun addItem(item: Item) {
-        ItemList.add(item)
     }
 }

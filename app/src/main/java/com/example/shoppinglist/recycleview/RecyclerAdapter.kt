@@ -5,23 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shoppinglist.utils.ItemList
 import com.example.shoppinglist.R
+import com.example.shoppinglist.enntities.Item
 
-class RecyclerAdapter(): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(private val items: MutableList<Item>): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var itemName: TextView
-        var itemQty: TextView
-        var itemNote: TextView
-        var itemDate: TextView
-
-        init {
-            itemName = itemView.findViewById(R.id.cv_itemName)
-            itemQty = itemView.findViewById(R.id.cv_qty)
-            itemNote = itemView.findViewById(R.id.cv_note)
-            itemDate = itemView.findViewById(R.id.cv_shop_date)
-        }
+        var itemName: TextView = itemView.findViewById(R.id.cv_itemName)
+        var itemQty: TextView = itemView.findViewById(R.id.cv_qty)
+        var itemNote: TextView = itemView.findViewById(R.id.cv_note)
+        var itemDate: TextView = itemView.findViewById(R.id.cv_shop_date)
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
@@ -31,14 +24,13 @@ class RecyclerAdapter(): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-        viewHolder.itemName.text = ItemList[i].itemName
-        viewHolder.itemQty.text = ItemList[i].quantity
-        viewHolder.itemNote.text = ItemList[i].note
-        viewHolder.itemDate.text = ItemList[i].dateItem
+        viewHolder.itemName.text = items[i].itemName
+        viewHolder.itemQty.text = items[i].quantity
+        viewHolder.itemNote.text = items[i].note
+        viewHolder.itemDate.text = items[i].dateItem
     }
 
     override fun getItemCount(): Int {
-        return ItemList.size
+        return items.size
     }
-
 }
