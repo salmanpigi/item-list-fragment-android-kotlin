@@ -77,7 +77,6 @@ class AddItemFormFragment : Fragment() {
         return binding.root
     }
 
-
     private fun clearInput() {
         binding.etItemName.setText("")
         binding.etQty.setText("")
