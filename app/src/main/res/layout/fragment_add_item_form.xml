@@ -28,18 +28,17 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/et_shop_date"
+            android:id="@+id/etShopDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_shape"
-            android:ems="10"
             android:hint="Shopping Date"
-            android:inputType="textPersonName"
+            android:inputType="text"
             android:padding="10dp" />
 
         <EditText
-            android:id="@+id/et_item_name"
+            android:id="@+id/etItemName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -50,18 +49,18 @@
             android:padding="10dp" />
 
         <EditText
-            android:id="@+id/et_qty"
+            android:id="@+id/etQty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_shape"
             android:ems="10"
             android:hint="Quantity"
-            android:inputType="textPersonName"
+            android:inputType="numberDecimal"
             android:padding="10dp" />
 
         <EditText
-            android:id="@+id/et_note"
+            android:id="@+id/etNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -72,10 +71,10 @@
             android:padding="10dp" />
 
         <Button
-            android:id="@+id/btn_save_item"
-            android:background="@drawable/rounded_shape"
+            android:id="@+id/btnSaveItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_shape"
             android:text="Add" />
 
 

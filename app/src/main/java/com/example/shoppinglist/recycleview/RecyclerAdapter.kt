@@ -25,7 +25,7 @@ class RecyclerAdapter(private val items: MutableList<Item>): RecyclerView.Adapte
 
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
         viewHolder.itemName.text = items[i].itemName
-        viewHolder.itemQty.text = items[i].quantity
+        viewHolder.itemQty.text = items[i].quantity.toString()
         viewHolder.itemNote.text = items[i].note
         viewHolder.itemDate.text = items[i].dateItem
     }
