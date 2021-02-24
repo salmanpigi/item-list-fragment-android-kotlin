@@ -26,12 +26,18 @@ class AddItemFormFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(ItemViewModel::class.java)
     }
 
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = FragmentAddItemFormBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.apply {
             val calendar = Calendar.getInstance()
             val year = calendar.get(Calendar.YEAR)
@@ -67,7 +73,7 @@ class AddItemFormFragment : Fragment() {
                         dateItem = etShopDate.text.toString()
                     )
                     viewModel.addItem(item)
-                    clearInput()
+//                    clearInput()
                     Toast.makeText(activity, "Success add data", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(activity, "Data must not be null", Toast.LENGTH_SHORT).show()
@@ -75,13 +81,12 @@ class AddItemFormFragment : Fragment() {
 
             }
         }
+    }
 
-        return binding.root
-    }
-    private fun clearInput() {
-        binding.etItemName.setText("")
-        binding.etQty.setText("")
-        binding.etNote.setText("")
-        binding.etShopDate.setText("")
-    }
+//    private fun clearInput() {
+//        binding.etItemName.setText("")
+//        binding.etQty.setText("")
+//        binding.etNote.setText("")
+//        binding.etShopDate.setText("")
+//    }
 }
