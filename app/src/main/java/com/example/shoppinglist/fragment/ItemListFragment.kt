@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,8 @@ import com.example.shoppinglist.R
 import com.example.shoppinglist.databinding.FragmentItemListBinding
 import com.example.shoppinglist.recycleview.RecyclerAdapter
 import com.example.shoppinglist.viewmodel.ItemViewModel
+import kotlinx.android.synthetic.main.card_view_item.*
+import kotlinx.android.synthetic.main.card_view_item.view.*
 import kotlinx.android.synthetic.main.fragment_item_list.*
 
 

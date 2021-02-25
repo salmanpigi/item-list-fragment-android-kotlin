@@ -22,7 +22,7 @@ class SplashScreen : AppCompatActivity() {
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
-        if (hasFocus) hideSystemgUI()
+        if (hasFocus) hideSystemUI()
     }
 
     private fun hideSystemUI() {
