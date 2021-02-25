@@ -21,6 +21,7 @@ class ItemListFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(ItemViewModel::class.java)
+
     }
 
     override fun onCreateView(

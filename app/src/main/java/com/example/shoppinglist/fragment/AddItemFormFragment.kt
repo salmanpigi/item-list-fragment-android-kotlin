@@ -6,12 +6,15 @@ import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
+import com.example.shoppinglist.LoadingDialog
+import com.example.shoppinglist.ResourceStatus
 import com.example.shoppinglist.databinding.FragmentAddItemFormBinding
-import com.example.shoppinglist.enntities.Item
 import com.example.shoppinglist.viewmodel.ItemViewModel
 import java.util.*
 
@@ -19,10 +22,12 @@ class AddItemFormFragment : Fragment() {
 
     lateinit var viewModel: ItemViewModel
     lateinit var binding: FragmentAddItemFormBinding
+    lateinit var loadingDialog: androidx.appcompat.app.AlertDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(ItemViewModel::class.java)
+        subscribe()
     }
 
 
@@ -31,49 +36,21 @@ class AddItemFormFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        loadingDialog = LoadingDialog.build(requireContext())
         binding = FragmentAddItemFormBinding.inflate(layoutInflater)
         binding.apply {
-            val calendar = Calendar.getInstance()
-            val year = calendar.get(Calendar.YEAR)
-            val month = calendar.get(Calendar.MONTH)
-            val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-            etShopDate.inputType = InputType.TYPE_NULL
-            etShopDate.setOnClickListener(View.OnClickListener {
-                val datePickerDialog = activity?.let { it ->
-                    DatePickerDialog(
-                        it, DatePickerDialog.OnDateSetListener
-                        { view, year, monthOfYear, dayOfMonth ->
-                            etShopDate.setText(
-                                "$year/$monthOfYear/$dayOfMonth",
-                                TextView.BufferType.EDITABLE
-                            );
-                        }, year, month, day
-                    )
-                }
-                datePickerDialog?.show()
-            })
+            etShopDate.onCreateDate()
 
             btnSaveItem.setOnClickListener {
-                if (etItemName.text.toString() != "" &&
-                    etQty.text.toString() != "" &&
-                    etNote.text.toString() != "" &&
-                    etShopDate.text.toString() != ""
-                ) {
-                    val item = Item(
-                        itemName = etItemName.text.toString(),
-                        quantity = etQty.text.toString(),
-                        note = etNote.text.toString(),
-                        dateItem = etShopDate.text.toString()
-                    )
-                    viewModel.addItem(item)
-                    clearInput()
-                    Toast.makeText(activity, "Success add item", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(activity, "Data must not be null", Toast.LENGTH_SHORT).show()
-                }
-
-            }}
+                val name = etItemName.text.toString()
+                val qty = etQty.text.toString()
+                val note = etNote.text.toString()
+                val date = etShopDate.text.toString()
+                viewModel.inputValidation(name, qty, note, date)
+                clearInput()
+            }
+        }
         return binding.root
     }
 
@@ -82,5 +59,52 @@ class AddItemFormFragment : Fragment() {
         binding.etQty.setText("")
         binding.etNote.setText("")
         binding.etShopDate.setText("")
+    }
+
+    private fun EditText.onCreateDate() {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        this.inputType = InputType.TYPE_NULL
+        this.setOnClickListener(View.OnClickListener {
+            val datePickerDialog = activity?.let { it ->
+                DatePickerDialog(
+                    it, DatePickerDialog.OnDateSetListener
+                    { view, year, monthOfYear, dayOfMonth ->
+                        this.setText(
+                            "$year/$monthOfYear/$dayOfMonth",
+                            TextView.BufferType.EDITABLE
+                        );
+                    }, year, month, day
+                )
+            }
+            datePickerDialog?.show()
+        })
+    }
+
+    private fun subscribe() {
+        viewModel.isValid.observe(requireActivity()) {
+            when (it.status) {
+                ResourceStatus.LOADING -> loadingDialog.show()
+                ResourceStatus.SUCCESS -> {
+                    loadingDialog.hide()
+                    Toast.makeText(
+                        requireContext(),
+                        it.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                ResourceStatus.FAIL -> {
+                    loadingDialog.hide()
+                    Toast.makeText(
+                        requireContext(),
+                        it.message,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
     }
 }
