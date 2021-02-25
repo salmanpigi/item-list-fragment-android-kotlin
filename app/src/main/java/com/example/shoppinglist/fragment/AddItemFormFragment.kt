@@ -62,7 +62,7 @@ class AddItemFormFragment : Fragment() {
                 ) {
                     val item = Item(
                         itemName = etItemName.text.toString(),
-                        quantity = etQty.text.toString().toInt(),
+                        quantity = etQty.text.toString(),
                         note = etNote.text.toString(),
                         dateItem = etShopDate.text.toString()
                     )
